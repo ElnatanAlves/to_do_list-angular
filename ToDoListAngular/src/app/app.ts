@@ -23,6 +23,13 @@ export class App {
   todoList = signal<TodoItem[]>([]);
   newTask = signal<string>('');
 
+ngOnInit() {
+  const storedTasks = localStorage.getItem('todoList');
+  if (storedTasks) {
+    this.todoList.set(JSON.parse(storedTasks));
+  }
+}
+
   addTask(): void {
     const taskValue = this.newTask().trim();
     if (taskValue !== '') {
@@ -31,12 +38,12 @@ export class App {
         task: taskValue,
         completed: false
       };
-      
-      // Atualizando o signal
+  
       this.todoList.update(list => [...list, newTodoItem]);
       this.newTask.set('');
       console.log(this.todoList());
     }
+    localStorage.setItem('todoList', JSON.stringify(this.todoList()));
   }
 
   toggleCompleted(index: number): void {
@@ -45,10 +52,12 @@ export class App {
         i === index ? { ...item, completed: !item.completed } : item
       )
     );
+    localStorage.setItem('todoList', JSON.stringify(this.todoList()));
   }
 
   deleteTask(id: number): void {
     this.todoList.update(list => list.filter(item => item.id !== id));
     console.log(this.todoList());
+  localStorage.setItem('todoList', JSON.stringify(this.todoList()));
   }
 }
