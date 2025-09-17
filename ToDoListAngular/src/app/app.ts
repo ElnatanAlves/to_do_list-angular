@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { NgFor } from '@angular/common';
+
 
 
 export interface TodoItem{
@@ -12,7 +12,7 @@ export interface TodoItem{
  
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, NgFor],
+  imports: [RouterOutlet, FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

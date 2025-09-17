@@ -11,9 +11,11 @@
 <button (click)="addTask()"><i class="bi bi-plus-circle"></i></button>
 </div>
 <ul class="task-list">
-  <li *ngFor="let todoItem of todoList">
-    <span>{{todoItem.task}}</span>
-  </li>
+  @for (todoItem of todoList; track todoItem.id) {
+    <li>
+      <span>{{ todoItem.task }}</span>
+    </li>
+  }
 </ul>
 </main>
 
