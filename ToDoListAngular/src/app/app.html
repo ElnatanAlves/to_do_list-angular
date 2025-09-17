@@ -16,8 +16,7 @@
       <input 
         type="checkbox" 
         [checked]="todoItem.completed" 
-        (change)="toggleCompleted(i)"
-      />
+        (change)="toggleCompleted(i)"/>
       <span [class.completed]="todoItem.completed">{{ todoItem.task }}</span>
       <button (click)="deleteTask(todoItem.id)">
         <i class="bi bi-trash3"></i>

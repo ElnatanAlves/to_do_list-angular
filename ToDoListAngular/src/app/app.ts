@@ -2,7 +2,6 @@ import { NgClass } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { computed } from '@angular/core';
 
 export interface TodoItem {
   id: number;
