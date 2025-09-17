@@ -2,6 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { computed } from '@angular/core';
 
 export interface TodoItem {
   id: number;
@@ -10,6 +11,7 @@ export interface TodoItem {
 }
 
 @Component({
+  
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, FormsModule, NgClass],
