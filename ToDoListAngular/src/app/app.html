@@ -11,9 +11,17 @@
 <button (click)="addTask()"><i class="bi bi-plus-circle"></i></button>
 </div>
 <ul class="task-list">
-  @for (todoItem of todoList; track todoItem.id) {
-    <li>
-      <span>{{ todoItem.task }}</span>
+  @for (todoItem of todoList; track todoItem.id; let i = $index) {
+    <li [ngClass]="{'completed': todoItem.completed}">
+      <input 
+        type="checkbox" 
+        [checked]="todoItem.completed" 
+        (change)="toggleCompleted(i)"
+      />
+      <span [class.completed]="todoItem.completed">{{ todoItem.task }}</span>
+      <button (click)="deleteTask(todoItem.id)">
+        <i class="bi bi-trash3"></i>
+      </button>
     </li>
   }
 </ul>
