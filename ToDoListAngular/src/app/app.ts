@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { NgFor } from '@angular/common';
+
 
 export interface TodoItem{
   id:number;
@@ -10,12 +12,25 @@ export interface TodoItem{
  
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet, FormsModule, NgFor],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 
 export class App {
   todoList :TodoItem[]= [];
-  newtask : string='';
+  newTask : string='';
+  
+  addTask ():void{
+    if(this.newTask.trim()!==''){
+      const newTodoItem :TodoItem ={
+        id: Date.now(),
+        task: this.newTask,
+        completed: false
+      }
+      this.todoList.push(newTodoItem)
+      this.newTask=''
+      console.log(this.todoList)
+    }
+  }
 }
